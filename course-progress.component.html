@@ -1,0 +1,40 @@
+<div class="row align-center" style="padding-left: 15px;padding-bottom: 15px;">
+  <div class="column align-center text-center">
+    <h3 style="color: #623073;">Course Progress</h3>
+  </div>
+</div>
+
+<div>
+  <form class="form-inline" name="SearchTab">
+  <input class="form-control" type="text" ng-pattern="/^[1-9]{1}[0-9]{5}$/" placeholder="Search by Associate ID" name="Search" [(ngModel)]="AssociateID">
+  <button class="btn1" type="submit" (click)="searchbyID(AssociateID)">Search</button>
+  </form>
+  <div class="table-responsive text-nowrap table-content">
+  <table class="table table-bordered table-hover table-striped" *ngIf="detailsCount!=0">
+      <thead>
+        <tr style="background-color: #623073;color: #fff;">
+          <th class="text-center"> S.No  </th>
+          <th class="text-center"> Associate ID </th>
+          <th class="text-center"> Name of the associate </th>
+          <th class="text-center"> Status </th>
+          <th class="text-center"> Action  </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let associateData of courseProgressDetails;let i=index" >
+          <td class="row1"> {{i+1}} </td>
+          <td class="row1">{{associateData.AssociateId}}</td>
+          <td class="row1">{{associateData.AssociateName}}</td>
+          <td class="row1" *ngIf="associateData.CoursesCompletionStatus">Completed</td>
+          <td class="row1" *ngIf="!associateData.CoursesCompletionStatus">In Progress</td>
+          <td class="col-sm-2 row1">
+          <button type="button" class="btn1" (click)="viewProgressSummary(associateData.AssociateId)" >View</button>
+          </td>
+       </tr>
+      </tbody>
+    </table>
+    <div *ngIf="detailsCount==0">There is no progress data for the given Associate ID...</div>
+  </div>
+  </div>
+
+

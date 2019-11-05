@@ -1,0 +1,14 @@
+.popup{
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow-x: auto;
+}
+
+.row1{
+    text-align: center;
+}
+
+.table{
+    overflow-x: auto;
+}
+

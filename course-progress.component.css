@@ -1,0 +1,33 @@
+.btn1{
+    background-color: rgb(85,35,105);
+    color:white;
+    border-color: rgb(85,35,105);
+}
+
+.form-inline{
+    margin-top: 10px;
+    margin-bottom :10px;
+}
+
+.form-inline > * {
+    margin: 0px 20px !important;
+}
+
+.form-control{
+    overflow-x: hidden;
+    max-width:200px;
+}
+
+@media(max-width: 800px) {
+    .responsive_table {
+        overflow-x: auto !important;
+    }
+
+    .mat-table {
+        min-width:800px;
+    }
+}
+
+.row1{
+    text-align: center;
+}
