@@ -37,15 +37,16 @@
               {{currentInputFilePath ? currentInputFilePath : 'No File Chosen'}}</small>
           </div>
           <input style=" width: 100%;" *ngIf="associateplan.DocumentType==='Date'" class="form-control" type="text"
-            placeholder="dd-MM-yyyy" bsDatepicker value="{{ associateplan.CompletionDate | date:'dd-MM-yyyy'}}"
-            [(bsValue)]="associateplan.CompletionDate" [bsConfig]="bsConfig" placement="bottom left" />
+            placeholder="dd-MM-yyyy" bsDatepicker value="{{ courseCompletionDate | date:'dd-MM-yyyy'}}"
+            [(bsValue)]="courseCompletionDate" [bsConfig]="bsConfig" placement="bottom left" />
         </td>
-        <td><button *ngIf="associateplan.DocumentType === 'File'" id="btnUpload" class="btn btn-primary" name="Upload"
-            (click)="uploadFile(associateplan,'file'+i)">
+        <td>
+          <button *ngIf="associateplan.DocumentType === 'File'" id="btnUpload" class="btn btn-primary" name="Upload"
+            (click)="uploadFileToCourse($event,associateplan)">
             Upload
           </button>
           <button *ngIf="associateplan.DocumentType==='Date'" class="btn btn-primary"
-            (click)="updateAssociatePlan(associateplan)">
+            (click)="updateCompletionDate(associateplan,courseCompletionDate)">
             Update
           </button>
         </td>

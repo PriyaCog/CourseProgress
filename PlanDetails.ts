@@ -1,5 +1,5 @@
 export interface IPlanDetails {
-    AssociateId:string,
+    AssociateID:string,
     Week:string,
     Day: string,
     Date:Date,
@@ -8,13 +8,14 @@ export interface IPlanDetails {
     DocumentType:string,
     ReferenceUrl:string,
     CourseType:string,
-    CompletionDate:string
+    CompletionDate:Date,
+    ID:number
 }
 
 export class PlanDetails implements IPlanDetails {
 
     constructor(
-        public AssociateId: string,
+        public AssociateID: string,
         public Week: string,
         public Day: string,
         public Date: Date,
@@ -23,7 +24,8 @@ export class PlanDetails implements IPlanDetails {
         public DocumentType: string,
         public ReferenceUrl:string,
         public CourseType:string,
-        public CompletionDate:string
+        public CompletionDate:Date,
+        public ID:number
         ) {
     }
 }
