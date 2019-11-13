@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlanDetails } from './model/PlanDetails';
 import { AssociatePlanService } from './service/associatePlan.service';
 import { ToastrService } from 'ngx-toastr';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import{CourseDetailSummaryComponent} from '../course-detail-summary/course-detail-summary.component';
 
 @Component({
   selector: 'rlg-onboarding-associate-plan',
@@ -17,8 +19,9 @@ export class AssociatePlanComponent implements OnInit {
   associateID: string;
   courseCode: string;
   courseCompletionDate:Date;
+  bsModalRef: BsModalRef;
 
-  constructor(private associatePlanService: AssociatePlanService,private toastr: ToastrService) { }
+  constructor(private associatePlanService: AssociatePlanService,private toastr: ToastrService,private modalService: BsModalService) { }
 
   ngOnInit() {
     this.getPlanDetails();
@@ -60,6 +63,15 @@ export class AssociatePlanComponent implements OnInit {
     this.associatePlanService.uploadDate(associateplan.ID, associateplan.CompletionDate);
     this.toastr.success('Updated successfully');
     this.courseCompletionDate=null;
+  }
+
+  showCourseDetails(associateplan: PlanDetails) {
+    const initialState = {
+      currentCourseCode:associateplan.CourseCode,
+      currentCourseType:associateplan.CourseType,
+      currentCourseTitle:associateplan.CourseTitle
+    };
+    this.bsModalRef = this.modalService.show(CourseDetailSummaryComponent,{initialState});
   }
 
 }
